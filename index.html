@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbería Faraón | Caballito</title>
+<meta name="description" content="Barbería Faraón en Caballito. Cortes, barba y mucho más. Reservá tu turno online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--sand:#f1e6cf;--pap:#e6d4ab;--gold:#c9972b;--lap:#14307a;--ink:#17120a;--mut:#6b5d44;--line:#d4bf90;--r:18px;color-scheme:light}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font:400 1.0625rem/1.65 Jost,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{width:min(1120px,100% - 2.5rem);margin-inline:auto}
+.ci{font-family:Cinzel,Georgia,serif;font-weight:900;line-height:1;letter-spacing:.01em}
+.zig{height:14px;background:linear-gradient(135deg,var(--gold) 25%,transparent 25%) -7px 0,linear-gradient(225deg,var(--gold) 25%,transparent 25%) -7px 0,linear-gradient(315deg,var(--gold) 25%,transparent 25%),linear-gradient(45deg,var(--gold) 25%,transparent 25%);background-size:14px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:var(--lap);color:var(--sand);font:700 1rem Jost,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:1rem 1.8rem;border:2px solid var(--lap);text-decoration:none;cursor:pointer;min-height:52px;transition:transform .25s,background .25s,color .25s,box-shadow .25s}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--gold)}
+.btn.go{background:var(--gold);border-color:var(--ink);color:var(--ink)}.btn.go:hover{box-shadow:5px 5px 0 var(--ink)}
+.btn.ln{background:transparent;color:var(--lap)}
+/* intro */
+#intro{position:fixed;inset:0;z-index:100;background:var(--lap);color:var(--sand);display:grid;place-items:center;clip-path:polygon(0 0,100% 0,100% 100%,0 100%);transition:clip-path 1.1s cubic-bezier(.7,0,.2,1)}
+#intro .in{display:grid;justify-items:center;gap:.6rem;text-align:center;padding:1.5rem;transition:opacity .35s}
+#intro svg{width:min(230px,56vw);overflow:visible}
+.sun{animation:rise 1.6s .2s both cubic-bezier(.3,.7,.2,1)}
+@keyframes rise{from{transform:translateY(46px)}to{transform:translateY(-6px)}}
+.pyr{transform-box:fill-box;transform-origin:50% 100%;animation:grow 1s both cubic-bezier(.2,.8,.2,1)}
+@keyframes grow{from{transform:scaleY(0)}}
+.iname{font-size:clamp(2rem,7vw,4rem);clip-path:inset(0 50% 0 50%);animation:op 1s .9s forwards cubic-bezier(.7,0,.2,1)}
+@keyframes op{to{clip-path:inset(0)}}
+.isub{letter-spacing:.45em;text-transform:uppercase;font-size:.78rem;color:var(--gold);opacity:0;animation:fi .7s 1.6s forwards}
+@keyframes fi{to{opacity:1}}
+#intro.go{clip-path:polygon(50% 0,50% 0,50% 0,50% 0)}#intro.go .in{opacity:0}#intro.off{display:none}
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:50;padding:.9rem 0;padding-top:max(.9rem,env(safe-area-inset-top));transition:background .3s,box-shadow .3s}
+nav.sc{background:rgba(241,230,207,.95);backdrop-filter:blur(10px);box-shadow:0 2px 0 var(--gold)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{text-decoration:none;font-size:1.4rem;color:var(--lap)}
+nav ul{display:flex;gap:1.7rem;list-style:none;padding:0;font-weight:600;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase}
+nav ul a{text-decoration:none;color:var(--mut);transition:color .2s}nav ul a:hover{color:var(--lap)}
+@media(max-width:860px){nav ul{display:none}.btn.sm{padding:.7rem 1.1rem;min-height:44px}}
+/* hero */
+.hero{min-height:100svh;padding:7.5rem 0 4rem;display:grid;align-items:center;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:2rem;align-items:center}
+.ey{display:flex;align-items:center;gap:.8rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:var(--lap);margin-bottom:1.2rem}.ey i{width:46px;height:3px;background:var(--gold);display:block}
+.hero h1{font-size:clamp(3.4rem,11.5vw,9rem);color:var(--lap)}
+.hero h1 span{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 em{display:block;font-style:normal;transform:translateY(112%);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.rev .hero h1 em{transform:none}
+.hero h1 span:nth-child(2) em{color:var(--gold);-webkit-text-stroke:2px var(--ink);transition-delay:.12s;text-shadow:3px 3px 0 var(--ink)}
+.lead,.cta{opacity:0;transform:translateY(14px);transition:all .8s .6s}
+.lead{max-width:28rem;color:var(--mut);margin:1.4rem 0 1.9rem;font-size:1.15rem}
+.cta{display:flex;gap:.9rem;flex-wrap:wrap;transition-delay:.8s}.rev .lead,.rev .cta{opacity:1;transform:none}
+.art{position:relative;aspect-ratio:1;width:min(100%,460px);margin-inline:auto;opacity:0;transform:scale(.9);transition:all 1.1s .5s}.rev .art{opacity:1;transform:none}
+.rays{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(var(--gold) 0 5deg,transparent 5deg 15deg);animation:rot 40s linear infinite;-webkit-mask:radial-gradient(circle,transparent 52%,#000 53%);mask:radial-gradient(circle,transparent 52%,#000 53%);opacity:.55}
+@keyframes rot{to{transform:rotate(360deg)}}
+.disc{position:absolute;inset:16%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,var(--gold))}
+.pm{position:absolute;left:9%;right:9%;bottom:4%;height:66%;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(90deg,var(--lap) 50%,#0d2257 50%);display:grid;place-items:end center;padding-bottom:1.4rem;color:var(--sand);font-weight:700;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr}.art{width:min(80%,360px)}}
+/* franja */
+.band{background:var(--lap);color:var(--sand);padding:1.5rem 0}
+.band .wrap{display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap}
+.band div{display:flex;align-items:baseline;gap:.7rem}.band b{font:900 2rem Cinzel,serif;color:var(--gold)}.band span{font-size:.95rem;opacity:.8}
+/* secciones */
+section{padding:clamp(4rem,9vw,7rem) 0}
+.sh{margin-bottom:2.4rem;max-width:40rem}.sh h2{font-size:clamp(2rem,5.5vw,3.8rem);color:var(--lap)}.sh p{color:var(--mut);margin-top:.8rem}
+.fade{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}.fade.in{opacity:1;transform:none}
+/* papiro */
+.pp{background:var(--pap);border:3px double var(--ink);padding:clamp(1.4rem,4vw,3rem);max-width:860px;margin-inline:auto;position:relative;box-shadow:10px 10px 0 var(--gold)}
+.it{display:grid;grid-template-columns:1fr auto;gap:0 1.5rem;padding:1.1rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.it:last-of-type{border-bottom:0}
+.it h3{font:700 1.4rem Cinzel,serif;color:var(--lap)}.it em{font:900 1.4rem Cinzel,serif;font-style:normal;grid-row:span 2;align-self:center;font-variant-numeric:tabular-nums}.it p{color:var(--mut);font-size:.95rem}
+.nt{font-size:.85rem;color:var(--mut);margin-top:1rem;text-align:center}
+/* experiencia */
+.ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem}
+.xc{border:2px solid var(--ink);padding:1.8rem;background:var(--sand);transition:transform .3s,box-shadow .3s}
+.xc:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--lap)}
+.xc svg{width:44px;height:44px;stroke:var(--lap);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:1rem}
+.xc h3{font:700 1.3rem Cinzel,serif;margin-bottom:.3rem}.xc p{color:var(--mut);font-size:.96rem}
+/* equipo */
+.tm{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.pc i{display:block;aspect-ratio:4/5;border:2px solid var(--ink);background:linear-gradient(160deg,var(--pap),#cfb170);margin-bottom:.9rem;position:relative;clip-path:polygon(0 0,100% 0,100% 100%,0 100%);transition:transform .4s}
+.pc:hover i{transform:translateY(-6px)}.pc i::after{content:"Tu foto";position:absolute;bottom:.7rem;left:0;right:0;text-align:center;font-weight:700;font-size:.8rem;opacity:.6}
+.pc h3{font:700 1.2rem Cinzel,serif;color:var(--lap)}.pc p{color:var(--mut);font-size:.95rem}
+/* reseñas */
+.rb{background:var(--lap);color:var(--sand)}.rb .sh h2{color:var(--sand)}.rb .sh p{color:#c9d2ee}
+.rg{display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start}
+.bn{font:900 clamp(6rem,15vw,10rem)/.85 Cinzel,serif;color:var(--gold)}.stars{color:var(--gold);letter-spacing:.2em}
+blockquote{padding:1.3rem 0 1.3rem 1.6rem;border-left:4px solid var(--gold);margin-bottom:1rem;font-size:1.2rem}blockquote cite{display:block;margin-top:.5rem;font-style:normal;font-size:.9rem;color:#c9d2ee}
+@media(max-width:800px){.rg{grid-template-columns:1fr;gap:1.5rem}}
+/* chat */
+.ch{max-width:640px;margin-inline:auto;border:3px double var(--ink);background:var(--pap);box-shadow:10px 10px 0 var(--lap)}
+.ch header{background:var(--lap);color:var(--sand);padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem}
+.av{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font:900 1.1rem Cinzel,serif;flex:none}
+.ch header b{font:700 1.05rem Cinzel,serif;display:block;line-height:1.1}.ch header small{opacity:.75;font-size:.8rem}
+.log{height:340px;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:.6rem;scroll-behavior:smooth}
+.m{max-width:82%;padding:.7rem 1rem;border-radius:14px;animation:pop .35s;font-size:1rem}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}}
+.m.b{background:#fff;border:1px solid var(--line);border-top-left-radius:4px;align-self:flex-start}
+.m.u{background:var(--lap);color:var(--sand);border-top-right-radius:4px;align-self:flex-end}
+.ty{display:inline-flex;gap:4px;padding:.9rem 1rem}.ty i{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:bn 1s infinite}.ty i:nth-child(2){animation-delay:.15s}.ty i:nth-child(3){animation-delay:.3s}
+@keyframes bn{50%{transform:translateY(-5px);opacity:.5}}
+.tray{border-top:2px solid var(--ink);padding:1rem;display:flex;flex-wrap:wrap;gap:.5rem;min-height:84px;background:var(--sand);align-items:flex-start}
+.op{background:transparent;color:var(--lap);border:2px solid var(--lap);padding:.55rem 1rem;font:600 .95rem Jost,sans-serif;cursor:pointer;min-height:44px;transition:all .2s}
+.op:hover{background:var(--lap);color:var(--sand)}.op:disabled{opacity:.3;text-decoration:line-through;cursor:not-allowed}.op:disabled:hover{background:transparent;color:var(--lap)}
+.tray .btn{width:100%}
+/* ubicación */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hrs{list-style:none;padding:0;max-width:26rem;margin:1.2rem 0 1.6rem}.hrs li{display:flex;justify-content:space-between;padding:.65rem 0;border-bottom:1px solid var(--line)}.hrs .t{color:var(--lap);font-weight:700}
+.mp{aspect-ratio:1;max-height:360px;margin-inline:auto;width:100%;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(90deg,var(--lap) 50%,#0d2257 50%);color:var(--sand);display:grid;place-items:end center;text-align:center;padding:0 2rem 2rem}
+.mp b{font:900 1.3rem Cinzel,serif;display:block;color:var(--gold)}.mp span{font-size:.9rem}
+@media(max-width:800px){.loc{grid-template-columns:1fr}}
+footer{background:var(--ink);color:#cbbd9a;padding:2.2rem 0 3rem;font-size:.9rem}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.wa{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px -8px rgba(0,0,0,.5);transition:transform .2s}.wa:hover{transform:scale(1.08)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.hero h1 em{transform:none}.lead,.cta,.art,.fade,.isub{opacity:1;transform:none}.iname{clip-path:none}#intro{display:none}}
+</style>
+</head>
+<body class="lock">
+
+<div id="intro" aria-hidden="true"><div class="in">
+  <svg viewBox="0 0 200 120"><circle class="sun" cx="100" cy="52" r="30" fill="#c9972b"/><polygon class="pyr" points="30,112 100,26 170,112" fill="#f1e6cf"/><polygon class="pyr" points="100,26 170,112 100,112" fill="#d4bf90"/><line x1="10" y1="112" x2="190" y2="112" stroke="#c9972b" stroke-width="3"/></svg>
+  <div class="iname ci" id="iname"></div><div class="isub">Barbería · Caballito</div></div></div>
+
+<nav id="nav"><div class="wrap">
+  <a class="logo ci" href="#top">Faraón</a>
+  <ul><li><a href="#servicios">Servicios</a></li><li><a href="#barberia">La barbería</a></li><li><a href="#resenas">Reseñas</a></li><li><a href="#ubicacion">Dónde</a></li></ul>
+  <a class="btn go sm" href="#turno">Sacar turno</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div>
+    <div class="ey"><i></i><span id="zona"></span></div>
+    <h1 class="ci"><span><em>Barbería</em></span><span><em>Faraón</em></span></h1>
+    <p class="lead">Cortes y barba con carácter de rey, en pleno Caballito. Reservá tu turno y llegá a horario.</p>
+    <div class="cta"><a class="btn go" href="#turno">Reservar turno</a><a class="btn ln" href="#servicios">Ver precios</a></div>
+  </div>
+  <div class="art" aria-hidden="true"><div class="rays"></div><div class="disc"></div><div class="pm">Tu foto va acá</div></div>
+</div></header>
+
+<div class="band"><div class="wrap"><div><b id="bn"></b><span>nota en Google</span></div><div><b id="br"></b><span>reseñas de clientes</span></div><div><b>24/7</b><span>turnos online</span></div></div></div>
+<div class="zig" aria-hidden="true"></div>
+
+<section id="servicios"><div class="wrap">
+  <div class="sh fade"><h2 class="ci">Servicios y precios</h2><p>Precios claros, sin sorpresas.</p></div>
+  <div class="pp fade" id="pp"></div>
+  <p class="nt">Servicios y precios de ejemplo para la propuesta.</p>
+</div></section>
+
+<section id="barberia" style="padding-top:0"><div class="wrap">
+  <div class="sh fade"><h2 class="ci">La experiencia</h2><p>Más que un corte: un lugar para pasarla bien.</p></div>
+  <div class="ex fade">
+    <div class="xc"><svg viewBox="0 0 24 24"><path d="M5 8h11v6a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5zM16 10h2a2 2 0 0 1 0 4h-2M8 3v2M12 3v2"/></svg><h3>Café mientras esperás</h3><p>Un buen café o un mate en la espera.</p></div>
+    <div class="xc"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg><h3>Metegol y buena onda</h3><p>Un ambiente para charlar y desconectar.</p></div>
+    <div class="xc"><svg viewBox="0 0 24 24"><path d="M6 3l12 12M18 3L6 15M5 18a2 2 0 1 0 4 0 2 2 0 0 0-4 0M15 18a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/></svg><h3>Barbería y uñas</h3><p>Corte, barba y cuidado de manos en un solo lugar.</p></div>
+  </div>
+  <p class="nt" style="text-align:left;margin-top:1rem">Textos a confirmar con el negocio.</p>
+</div></section>
+
+<section id="equipo" style="padding-top:0"><div class="wrap">
+  <div class="sh fade"><h2 class="ci">Los barberos</h2></div>
+  <div class="tm fade"><div class="pc"><i></i><h3>Barbero 1</h3><p>Degradé y diseños</p></div><div class="pc"><i></i><h3>Barbero 2</h3><p>Clásicos y barba</p></div><div class="pc"><i></i><h3>Barbero 3</h3><p>Todo terreno</p></div></div>
+</div></section>
+
+<section id="resenas" class="rb"><div class="wrap">
+  <div class="sh fade"><h2 class="ci">Lo que dicen los clientes</h2></div>
+  <div class="rg fade"><div><div class="bn" id="bigN"></div><div class="stars">★★★★★</div><p style="color:#c9d2ee" id="rtxt"></p></div><div id="rq"></div></div>
+</div></section>
+
+<section id="turno"><div class="wrap">
+  <div class="sh fade"><h2 class="ci">Reservá tu turno</h2><p>Charlá con Faraón: te hace 4 preguntas y arma tu turno.</p></div>
+  <div class="ch fade"><header><div class="av">F</div><div><b>Faraón</b><small>Responde al instante</small></div></header>
+    <div class="log" id="log" aria-live="polite"></div><div class="tray" id="tray"></div></div>
+</div></section>
+
+<section id="ubicacion" style="padding-top:0"><div class="wrap loc">
+  <div class="fade"><h2 class="ci" style="font-size:clamp(2rem,5.5vw,3.8rem);color:var(--lap)">Dónde estamos</h2><p id="dir" style="color:var(--mut);margin-top:.8rem;font-size:1.15rem"></p><ul class="hrs" id="hrs"></ul>
+    <div style="display:flex;gap:.9rem;flex-wrap:wrap"><a class="btn" id="mapA" target="_blank" rel="noopener" href="#">Cómo llegar</a><a class="btn ln" id="waA" target="_blank" rel="noopener" href="#">WhatsApp</a></div></div>
+  <div class="mp fade"><div><b>Acá va el mapa</b><span id="dir2"></span></div></div>
+</div></section>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Barbería Faraón</span><span>Propuesta de diseño por <a href="https://www.instagram.com/veltri.studio/" target="_blank" rel="noopener">Veltri Studio</a></span></div></footer>
+<a class="wa" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4Z"/></svg></a>
+
+<script>
+/* ======== DATOS DEL NEGOCIO: lo único que se edita para personalizar ======== */
+const C={
+  nombre:"Barbería Faraón",
+  zona:"Caballito, Buenos Aires",
+  direccion:"Av. Rivadavia 5508, Caballito",
+  mapa:"https://www.google.com/maps/search/?api=1&query=Barberia%20Faraon%20Caballito%20Av%20Rivadavia%205508&query_place_id=ChIJ7Z2lHADLvJURhXISS162oOc",
+  wa:"5491123990250",
+  nota:4.9, reseñas:202,
+  dias:[2,3,4,5,6], horas:[11,20], paso:45,
+  servicios:[["Corte clásico","Tijera o máquina, con perfilado y peinado",12000],["Corte + barba","El combo completo con toalla caliente",18000],["Barba","Perfilado con navaja y aceites",9000],["Degradé","Fade a medida, terminación a navaja",14000],["Corte niños","Hasta 12 años",10000],["Manicura","Cuidado de manos",14000]],
+  equipo:["Barbero 1","Barbero 2","Barbero 3"],
+  opiniones:[["Excelente atención y el corte salió como lo pedí.","Reseña de ejemplo"],["Un lugar con muy buena onda. Puntuales y prolijos.","Reseña de ejemplo"]]
+};
+/* ============================================================================ */
+const $=id=>document.getElementById(id),pesos=n=>"$"+n.toLocaleString("es-AR"),DN=["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"],MN=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const wl=t=>"https://wa.me/"+C.wa+"?text="+encodeURIComponent(t),nf=String(C.nota).replace(".",",");
+$("iname").textContent=C.nombre;$("yr").textContent=new Date().getFullYear();$("zona").textContent=C.zona;
+$("dir").textContent=C.direccion;$("dir2").textContent=C.direccion;$("mapA").href=C.mapa;$("waA").href=wl("Hola, quiero consultar por un turno.");$("waFab").href=wl("Hola, quiero consultar por un turno.");
+$("bn").textContent=nf;$("br").textContent=C.reseñas;$("bigN").textContent=nf;$("rtxt").textContent="Según "+C.reseñas+" reseñas en Google.";
+$("rq").innerHTML=C.opiniones.map(o=>`<blockquote>“${o[0]}”<cite>${o[1]}</cite></blockquote>`).join("");
+$("pp").innerHTML=C.servicios.map(s=>`<div class="it"><h3>${s[0]}</h3><em>${pesos(s[2])}</em><p>${s[1]}</p></div>`).join("");
+const hh=h=>String(h).padStart(2,"0")+":00";
+$("hrs").innerHTML=[1,2,3,4,5,6,0].map(d=>`<li><span>${["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"][d]}</span><span class="${C.dias.includes(d)?"t":""}">${C.dias.includes(d)?hh(C.horas[0])+" a "+hh(C.horas[1]):"Cerrado"}</span></li>`).join("");
+/* reserva tipo chat */
+const days=[];for(let i=0,d=new Date();days.length<7&&i<21;i++,d=new Date(Date.now()+i*864e5))if(C.dias.includes(d.getDay())&&!(i===0&&new Date().getHours()>=C.horas[1]-1))days.push(d);
+const dl=d=>DN[d.getDay()]+" "+d.getDate()+" "+MN[d.getMonth()];
+let A={};
+function slotsFor(d){const now=new Date(),seed=d.getDate()*5+d.getMonth(),o=[];for(let m=C.horas[0]*60;m+C.paso<=C.horas[1]*60;m+=C.paso){const t=new Date(d);t.setHours(0,m,0,0);o.push({l:String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0"),off:((m/C.paso|0)*3+seed)%4===0||(d.toDateString()===now.toDateString()&&t<now)})}return o}
+const flow=[
+ {q:"¡Hola! Soy Faraón. ¿Qué te hacemos hoy?",o:()=>C.servicios.map(s=>({l:s[0]+" · "+pesos(s[2]),v:s})),set:v=>A.s=v},
+ {q:"Perfecto. ¿Tenés preferencia de barbero?",o:()=>["Sin preferencia",...C.equipo].map(x=>({l:x,v:x})),set:v=>A.b=v},
+ {q:"¿Qué día te queda bien?",o:()=>days.map(d=>({l:dl(d),v:d})),set:v=>A.d=v},
+ {q:"¿A qué hora?",o:()=>slotsFor(A.d).map(x=>({l:x.l,v:x.l,off:x.off})),set:v=>A.h=v}];
+const log=$("log"),tray=$("tray");
+function say(t,c){const m=document.createElement("div");m.className="m "+c;m.textContent=t;log.appendChild(m);log.scrollTop=log.scrollHeight;return m}
+function ask(i){tray.innerHTML="";if(i>=flow.length)return done();
+  const ty=document.createElement("div");ty.className="m b ty";ty.innerHTML="<i></i><i></i><i></i>";log.appendChild(ty);log.scrollTop=log.scrollHeight;
+  setTimeout(()=>{ty.remove();say(flow[i].q,"b");flow[i].o().forEach(o=>{const b=document.createElement("button");b.className="op";b.type="button";b.textContent=o.l;if(o.off)b.disabled=true;b.onclick=()=>{flow[i].set(o.v);say(o.l,"u");ask(i+1)};tray.appendChild(b)})},550)}
+function done(){const ty=document.createElement("div");ty.className="m b ty";ty.innerHTML="<i></i><i></i><i></i>";log.appendChild(ty);
+  setTimeout(()=>{ty.remove();say(`¡Listo! Te anoto: ${A.s[0]} con ${A.b}, el ${dl(A.d)} a las ${A.h}. Total desde ${pesos(A.s[2])}.`,"b");
+    const a=document.createElement("a");a.className="btn go";a.target="_blank";a.rel="noopener";a.textContent="Confirmar por WhatsApp";a.href=wl(`Hola, soy [mi nombre]. Quiero reservar: ${A.s[0]} con ${A.b}, el ${dl(A.d)} a las ${A.h}.`);
+    const r=document.createElement("button");r.className="op";r.type="button";r.textContent="Empezar de nuevo";r.onclick=()=>{log.innerHTML="";A={};ask(0)};tray.append(a,r)},650)}
+ask(0);
+/* animaciones */
+const intro=$("intro"),start=()=>{document.body.classList.add("rev");document.body.classList.remove("lock")};
+setTimeout(()=>{intro.classList.add("go");setTimeout(()=>document.body.classList.add("rev"),500)},2900);setTimeout(()=>{intro.classList.add("off");start()},4100);
+if(matchMedia("(prefers-reduced-motion:reduce)").matches){intro.classList.add("off");start()}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll(".fade").forEach(e=>io.observe(e));
+addEventListener("scroll",()=>$("nav").classList.toggle("sc",scrollY>40),{passive:true});
+</script>
+</body>
+</html>
